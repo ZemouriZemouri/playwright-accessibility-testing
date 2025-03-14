@@ -28,8 +28,8 @@ jobs:
     # Genereer Allure rapport (wordt altijd uitgevoerd)
     - name: Generate Allure report
       run: |
-        npx allure generate ./allure-results --clean -o ./allure-report
-        echo "ALLURE_RESULTS_DIR=$(pwd)/allure-results" >> $GITHUB_ENV
+         npm install -g allure-commandline
+         allure generate allure-results -o allure-report --clean
     
     # Upload Allure rapport als artifact (tenzij workflow geannuleerd)
     - uses: actions/upload-artifact@v4
