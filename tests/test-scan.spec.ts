@@ -18,14 +18,15 @@ test('navigation menu flyout should not have automatically detectable accessibil
 	await page.getByRole('textbox', { name: 'Bericht (verplicht)' }).press('ArrowRight');
 	await page.getByRole('textbox', { name: 'Bericht (verplicht)' }).press('ArrowRight');
 	await page.getByRole('textbox', { name: 'Bericht (verplicht)' }).fill('Hoi Hoi ! Dit is een Test!');
-	await page.getByRole('button', { name: 'Versturen' }).click();
+	// await page.getByRole('button', { name: 'Versturen' }).click();
   
     // It is important to waitFor() the page to be in the desired
     // state *before* running analyze(). Otherwise, axe might not
     // find all the elements your test expects it to scan.
-    await page.locator('#mx_form_0 div').waitFor();
-    // await page.locator('#mx_form_0 div').filter({ hasText: 'Versturen' }).click();
- 
+	await page.locator('#mx_form_0 div').filter({ hasText: 'Versturen' }).waitFor();
+    await page.locator('#mx_form_0 div').filter({ hasText: 'Versturen' }).click();
+    
+	
     const accessibilityScanResults = await new AxeBuilder({ page })
       .include('#mx_form_0 div')
       .analyze();
