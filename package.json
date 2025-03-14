@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "pretest": "tsc --incremental -p tests/tsconfig.json",
+    "test": "playwright test -c tests-out"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.6.1"
+  }
+}
