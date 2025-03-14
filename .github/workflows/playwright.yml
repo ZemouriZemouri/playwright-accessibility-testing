@@ -6,7 +6,7 @@ on:
     branches: [main]
 jobs:
   test:
-  name: Playwright Accessibility Tests
+  - name: Playwright Accessibility Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
