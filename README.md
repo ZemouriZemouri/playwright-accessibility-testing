@@ -13,6 +13,15 @@ ___
 npm init playwright@latest
 ```
 
+- Install Allure dependencies
+```
+npm install --save-dev allure-playwright allure-commandline
+```
+or 
+```
+npm install --save-dev allure-playwright @playwright/test allure-commandline
+```
+
 - Installing project dependencies
 ```
 npm install
