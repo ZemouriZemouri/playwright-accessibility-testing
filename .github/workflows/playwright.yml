@@ -1,4 +1,4 @@
-name: Playwright Axe Accessibility Testing
+name: Playwright Axe Accessibility Testing with Allure
 on:
   push:
     branches: [main]
@@ -13,15 +13,37 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    
+    # Install dependencies inclusief Allure
     - name: Install dependencies
       run: npm ci
+    
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    
+    # Run tests met Allure reporter
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --reporter=line,allure-playwright
+    
+    # Genereer Allure rapport
+    - name: Generate Allure report
+      run: |
+        npx allure generate ./allure-results --clean -o ./allure-report
+        echo "ALLURE_RESULTS_DIR=$(pwd)/allure-results" >> $GITHUB_ENV
+    
+    # Upload Allure rapport als artifact
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report
-        path: playwright-report/
+        name: allure-report
+        path: allure-report/
         retention-days: 30
+    
+    # Deploy naar GitHub Pages (vereist gh-pages branch)
+    - name: Deploy to GitHub Pages
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report
+        keep_files: true
