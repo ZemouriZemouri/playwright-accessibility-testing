@@ -1,10 +1,11 @@
 # Accessibility Testing with Playwright
-Demo project to demonstrate how to use Playwright in an Accessibility context.
+Demo Typescript UI project to demonstrate how to use Playwright in an Accessibility context.
 ___
 
 ## Requirements
 - [Node.js](https://nodejs.org/)
 - [Npm](https://www.npmjs.com/)
+- [JDK](https://jdk.java.net/) => needed for Allure reporting
 
 ## Installation
 - Installing Playwright
@@ -55,10 +56,16 @@ Navigate to root directory, so you can run several commands:
 
 ## Reporting
 
-- To open last HTML report run
+- To open HTML report last run
 
 ```
   npx playwright show-report
+```
+
+- Generate Allure report
+
+```
+allure serve allure_results
 ```
   
 ## Check out the following files
@@ -67,9 +74,9 @@ Navigate to root directory, so you can run several commands:
 - .\tests-examples\demo-todo-app.spec.ts - Demo Todo App end-to-end tests
 - .\playwright.config.ts - Playwright Test configuration
 
-## Documentation Link
+## Documentation
 
-[Acessibility-Testing-Documentation](https://playwright.dev/docs/accessibility-testing)
+[Playwright Accessibility Testing documentation](https://playwright.dev/docs/accessibility-testing)
 ___
 
 
