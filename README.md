@@ -76,7 +76,7 @@ allure serve allure_results
 
 ## Documentation
 
-[Playwright Accessibility Testing documentation](https://playwright.dev/docs/accessibility-testing)
+[Playwright Accessibility Testing](https://playwright.dev/docs/accessibility-testing)
 ___
 
 
