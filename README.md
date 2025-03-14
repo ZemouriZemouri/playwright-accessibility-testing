@@ -67,7 +67,11 @@ Navigate to root directory, so you can run several commands:
 ```
 allure serve allure_results
 ```
-  
+or
+```
+npm run generate-report
+```
+
 ## Check out the following files
 
 - .\e2e\example.spec.ts - Example end-to-end test
