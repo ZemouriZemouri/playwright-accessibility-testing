@@ -23,10 +23,11 @@ test('navigation menu flyout should not have automatically detectable accessibil
     // It is important to waitFor() the page to be in the desired
     // state *before* running analyze(). Otherwise, axe might not
     // find all the elements your test expects it to scan.
-    await page.locator('#section-3 > div > div.cards_mosaic-cards > div.cm_card-mosaic-one.right > div > div > div.cm_card-mosaic-one-content.card-mosaic-mobile-right > div > a').waitFor();
-  
+    await page.locator('#mx_form_0 div').waitFor();
+    // await page.locator('#mx_form_0 div').filter({ hasText: 'Versturen' }).click();
+ 
     const accessibilityScanResults = await new AxeBuilder({ page })
-      .include('#section-3 > div > div.cards_mosaic-cards > div.cm_card-mosaic-one.right > div > div > div.cm_card-mosaic-one-content.card-mosaic-mobile-right > div > a')
+      .include('#mx_form_0 div')
       .analyze();
   
     expect(accessibilityScanResults.violations).toEqual([]);
